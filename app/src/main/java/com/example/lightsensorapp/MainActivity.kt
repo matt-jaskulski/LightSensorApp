@@ -25,6 +25,13 @@ class MainActivity : ComponentActivity(), SensorEventListener {
 
     private lateinit var vb: ActivityMainBinding
 
+    companion object {
+        const val DEFAULT_VALUE_ISO = 100f
+        const val DEFAULT_VALUE_EC = 0.0f
+        const val DEFAULT_VALUE_APERTURE = 2.8f
+        const val DEFAULT_VALUE_TIME = 0.02f // s, 1/50 s
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -42,6 +49,11 @@ class MainActivity : ComponentActivity(), SensorEventListener {
         vb.etTime.addTextChangedListener(MyTextWatcher(vb.etTime))
         vb.etAperture.addTextChangedListener(MyTextWatcher(vb.etAperture))
         vb.etEc.addTextChangedListener(MyTextWatcher(vb.etEc))
+
+        vb.etIso.setText(getString(R.string.format_iso, DEFAULT_VALUE_ISO))
+        vb.etTime.setText(getString(R.string.format_time, 1/DEFAULT_VALUE_TIME))
+        vb.etAperture.setText(getString(R.string.format_aperture, DEFAULT_VALUE_APERTURE))
+        vb.etEc.setText(getString(R.string.format_ec, DEFAULT_VALUE_EC))
 
         vb.cbIso.setOnClickListener {
             toggleControls(vb.cbIso)
