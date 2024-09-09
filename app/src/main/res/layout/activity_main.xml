@@ -20,15 +20,10 @@
             android:gravity="center"
             android:text="@string/format_light_reading"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical">
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:baselineAligned="false"
                 android:orientation="horizontal"
                 android:gravity="center|top">
 
@@ -150,8 +145,6 @@
             </LinearLayout>
 
         </LinearLayout>
-
-    </LinearLayout>
 
     <TextView
         style="@style/LightMeterApp.Footer"
