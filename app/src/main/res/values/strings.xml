@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">LightSensorApp</string>
+
+    <string name="format_light_reading">%d lux</string>
+    <string name="label_aperture">F/#</string>
+    <string name="label_time">1/time [s]</string>
+    <string name="label_iso">ISO</string>
+    <string name="label_ec">EC</string>
+
+    <string name="auto">Auto</string>
+    <string name="incorrect_numerical_value">Value?</string>
+
+    <string name="dialog_title_no_light_meter">No light meter</string>
+    <string name="dialog_message_no_light_meter">Sorry, a light meter was not detected in this device.</string>
+    <string name="ok">OK</string>
+
+    <string name="format_iso">%1.0f</string>
+    <string name="format_time">%1.0f</string>
+    <string name="format_aperture">%1.1f</string>
+    <string name="format_ec">%1.1f</string>
+
+    <string name="footer">Created by vision.app</string>
+
+</resources>
