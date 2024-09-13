@@ -39,7 +39,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="30dp"
                         android:text="@string/auto"
-                        android:checked="true"/>
+                        android:checked="false"/>
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/til_iso"
                         android:layout_width="match_parent"
@@ -52,7 +52,6 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:inputType="numberDecimal"
-                            android:enabled="false"
                             android:text="@string/format_iso"/>
                     </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
@@ -122,9 +121,14 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
                     android:layout_margin="10dp"
-                    android:paddingTop="30dp"
                     android:orientation="vertical"
                     android:gravity="center">
+                    <CheckBox
+                        android:id="@+id/cb_ec"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:text="@string/auto"
+                        android:checked="true"/>
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/til_ec"
                         android:layout_width="match_parent"
@@ -137,7 +141,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:inputType="numberDecimal"
-                            android:enabled="true"
+                            android:enabled="false"
                             android:text="@string/format_ec"/>
                     </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>

@@ -15,6 +15,7 @@ import androidx.activity.ComponentActivity
 import kotlin.math.pow
 import com.example.lightsensorapp.databinding.ActivityMainBinding
 import java.util.regex.Pattern
+import kotlin.math.log2
 
 class MainActivity : ComponentActivity(), SensorEventListener {
 
@@ -66,6 +67,10 @@ class MainActivity : ComponentActivity(), SensorEventListener {
         vb.cbAperture.setOnClickListener {
             toggleControls(vb.cbAperture)
         }
+
+        vb.cbEc.setOnClickListener {
+            toggleControls(vb.cbEc)
+        }
     }
 
     private fun toggleControls(checkbox: CheckBox) {
@@ -73,22 +78,32 @@ class MainActivity : ComponentActivity(), SensorEventListener {
         vb.etIso.isEnabled = true
         vb.etTime.isEnabled = true
         vb.etAperture.isEnabled = true
+        vb.etEc.isEnabled = true
 
         when(checkbox) {
             vb.cbIso -> {
                 vb.etIso.isEnabled = false
                 vb.cbTime.isChecked = false
                 vb.cbAperture.isChecked = false
+                vb.cbEc.isChecked = false
             }
             vb.cbTime -> {
                 vb.etTime.isEnabled = false
                 vb.cbIso.isChecked = false
                 vb.cbAperture.isChecked = false
+                vb.cbEc.isChecked = false
             }
             vb.cbAperture -> {
                 vb.etAperture.isEnabled = false
                 vb.cbIso.isChecked = false
                 vb.cbTime.isChecked = false
+                vb.cbEc.isChecked = false
+            }
+            vb.cbEc -> {
+                vb.etEc.isEnabled = false
+                vb.cbIso.isChecked = false
+                vb.cbTime.isChecked = false
+                vb.cbAperture.isChecked = false
             }
         }
 
@@ -112,7 +127,7 @@ class MainActivity : ComponentActivity(), SensorEventListener {
         var iso = vb.etIso.text.toString().toFloatOrNull() ?: 100f
         var aperture = vb.etAperture.text.toString().toFloatOrNull() ?: 2.8f
         var time = 1f / (vb.etTime.text.toString().toFloatOrNull() ?: 0.5f) // s
-        val ec = vb.etEc.text.toString().toFloatOrNull() ?: 0.0f
+        var ec = vb.etEc.text.toString().toFloatOrNull() ?: 0.0f
         val K = 273.8f
 
         //val lux = K * aperture.pow(2.0f) / iso / time
@@ -127,6 +142,9 @@ class MainActivity : ComponentActivity(), SensorEventListener {
         } else if(vb.cbAperture.isChecked) {
             aperture = (lux / K * iso * time).pow(1/2.0f) / 2f.pow(ec)
             vb.etAperture.setText(getString(R.string.format_aperture, aperture))
+        } else if(vb.cbEc.isChecked) {
+            ec = K * aperture.pow(2.0f) / iso / time
+            vb.etEc.setText(getString(R.string.format_ec, log2(ec/lux)))
         }
 
     }
