@@ -18,6 +18,7 @@
     <string name="format_time">%1.0f</string>
     <string name="format_aperture">%1.1f</string>
     <string name="format_ec">%1.1f</string>
+    <string name="format_ec_signed">%+1.1f</string>
 
     <string name="footer">Created by vision.app</string>
 

@@ -135,16 +135,20 @@ class MainActivity : ComponentActivity(), SensorEventListener {
         if(vb.cbIso.isChecked) {
             iso = K * aperture.pow(2.0f) / lux / time * 2f.pow(ec)
             vb.etIso.setText(getString(R.string.format_iso, iso))
+            vb.tvSelection.text = getString(R.string.format_iso, iso)
         } else if(vb.cbTime.isChecked) {
             time = K * aperture.pow(2.0f) / lux / iso * 2f.pow(ec)
             time = 1f/time
             vb.etTime.setText(getString(R.string.format_time, time))
+            vb.tvSelection.text = getString(R.string.format_time, time)
         } else if(vb.cbAperture.isChecked) {
             aperture = (lux / K * iso * time).pow(1/2.0f) / 2f.pow(ec)
             vb.etAperture.setText(getString(R.string.format_aperture, aperture))
+            vb.tvSelection.text = getString(R.string.format_aperture, aperture)
         } else if(vb.cbEc.isChecked) {
             ec = K * aperture.pow(2.0f) / iso / time
-            vb.etEc.setText(getString(R.string.format_ec, log2(ec/lux)))
+            vb.etEc.setText(getString(R.string.format_ec, log2(lux/ec)))
+            vb.tvSelection.text = getString(R.string.format_ec_signed, log2(lux/ec))
         }
 
     }
@@ -172,7 +176,7 @@ class MainActivity : ComponentActivity(), SensorEventListener {
                 lux = it.values[0]
 
                 // Update the UI with the light sensor data
-                vb.tvLightReading.text = getString(R.string.format_light_reading, lux.toInt())
+                vb.tvLight.text = getString(R.string.format_light_reading, lux.toInt())
 
                 updateExposure()
             }
