@@ -9,6 +9,7 @@
 
     <string name="auto">Auto</string>
     <string name="incorrect_numerical_value">Value?</string>
+    <string name="update">Update</string>
 
     <string name="dialog_title_no_light_meter">No light meter</string>
     <string name="dialog_message_no_light_meter">Sorry, a light meter was not detected in this device.</string>

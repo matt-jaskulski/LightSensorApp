@@ -11,6 +11,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.CheckBox
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import kotlin.math.pow
 import com.example.lightsensorapp.databinding.ActivityMainBinding
@@ -22,7 +23,7 @@ class MainActivity : ComponentActivity(), SensorEventListener {
     private lateinit var sensorManager: SensorManager
     private var lightSensor: Sensor? = null
 
-    private var lux = 0f
+    private var lux: Float = 0f
 
     private lateinit var vb: ActivityMainBinding
 
@@ -42,6 +43,7 @@ class MainActivity : ComponentActivity(), SensorEventListener {
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
 
         lightSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT)
+
         if (lightSensor == null) {
             showAlertDialog()
         }
@@ -70,6 +72,11 @@ class MainActivity : ComponentActivity(), SensorEventListener {
 
         vb.cbEc.setOnClickListener {
             toggleControls(vb.cbEc)
+        }
+
+        vb.btUpdate.setOnClickListener {
+            updateExposure()
+            Toast.makeText(this, getString(R.string.update), Toast.LENGTH_LONG).show()
         }
     }
 
@@ -167,6 +174,12 @@ class MainActivity : ComponentActivity(), SensorEventListener {
 
         // Unregister the sensor listener when the activity is paused
         sensorManager.unregisterListener(this)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+        // Goodbye
     }
 
     // SensorEventListener methods

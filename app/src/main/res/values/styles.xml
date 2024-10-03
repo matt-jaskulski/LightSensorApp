@@ -13,6 +13,7 @@
         <item name="android:shadowRadius">20</item>
         <item name="android:textSize">36sp</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:background">@drawable/bg_dome</item>
     </style>
 
     <style name="LightMeterApp.TextAppearance.Value" parent="TextAppearance.MaterialComponents.Headline6"/>
@@ -23,6 +24,10 @@
         <item name="android:gravity">center</item>
         <item name="android:padding">10dp</item>
         <item name="android:textColor">#CCCCCC</item>
+    </style>
+
+    <style name="LightMeterApp.Button" parent="TextAppearance.MaterialComponents.Button">
+        <item name="android:backgroundTint">@color/colorAccent</item>
     </style>
 
 </resources>
